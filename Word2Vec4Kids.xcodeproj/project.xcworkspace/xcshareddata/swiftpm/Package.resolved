@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "customwordembeddingpackage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nwiatrek/CustomWordEmbeddingPackage.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "f23d2c3084632f925a889f799f292b7cd2d25ae8"
+      }
+    }
+  ],
+  "version" : 2
+}
