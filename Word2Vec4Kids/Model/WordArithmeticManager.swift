@@ -13,7 +13,7 @@ struct WordArithmeticManager {
     
     func performWordArithmetic(addends: [String], subtrahends: [String], numberOfKeys: Int, completion: @escaping ([String]) -> Void) {
         // Use SingletonEmbedding to set up the embedding and perform arithmetic
-        SingletonEmbedding.shared.setup(filePath: "/Users/yshvrm/Documents/iOSProjects/gloveTest/glove_100d_out.txt")
+        SingletonEmbedding.shared.setup(filePath: "/Users/yshvrm/Documents/iOSProjects/glove/glove_100d_out.txt")
         
         // Get the embedding from SingletonEmbedding
         guard let embedding = SingletonEmbedding.shared.getEmbedding() else {

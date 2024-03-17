@@ -19,6 +19,7 @@
 		C50D70B82B93F90E0099B09C /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50D70B72B93F90E0099B09C /* QuestionView.swift */; };
 		C50D70BA2B9441E80099B09C /* WordArithmeticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50D70B92B9441E80099B09C /* WordArithmeticManager.swift */; };
 		C50D70BC2B94CAB30099B09C /* SingletonEmbedding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50D70BB2B94CAB30099B09C /* SingletonEmbedding.swift */; };
+		C526269C2BA6C5540072AE81 /* MadLibsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526269B2BA6C5540072AE81 /* MadLibsView.swift */; };
 		C5316D4D2BA3940800A83D89 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5316D4C2BA3940800A83D89 /* User.swift */; };
 		C5316D4F2BA3981800A83D89 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5316D4E2BA3981800A83D89 /* WelcomeView.swift */; };
 		C59940542B976B0F009A6599 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59940532B976B0F009A6599 /* CustomButton.swift */; };
@@ -57,6 +58,7 @@
 		C50D70B72B93F90E0099B09C /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		C50D70B92B9441E80099B09C /* WordArithmeticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordArithmeticManager.swift; sourceTree = "<group>"; };
 		C50D70BB2B94CAB30099B09C /* SingletonEmbedding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingletonEmbedding.swift; sourceTree = "<group>"; };
+		C526269B2BA6C5540072AE81 /* MadLibsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadLibsView.swift; sourceTree = "<group>"; };
 		C5316D4C2BA3940800A83D89 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C5316D4E2BA3981800A83D89 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		C59940532B976B0F009A6599 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				C50D70B72B93F90E0099B09C /* QuestionView.swift */,
 				C59940532B976B0F009A6599 /* CustomButton.swift */,
 				C5316D4E2BA3981800A83D89 /* WelcomeView.swift */,
+				C526269B2BA6C5540072AE81 /* MadLibsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				C50D70B82B93F90E0099B09C /* QuestionView.swift in Sources */,
 				C50D70852B93CE1E0099B09C /* ContentView.swift in Sources */,
 				C50D70BA2B9441E80099B09C /* WordArithmeticManager.swift in Sources */,
+				C526269C2BA6C5540072AE81 /* MadLibsView.swift in Sources */,
 				C50D70BC2B94CAB30099B09C /* SingletonEmbedding.swift in Sources */,
 				C5316D4F2BA3981800A83D89 /* WelcomeView.swift in Sources */,
 				C5316D4D2BA3940800A83D89 /* User.swift in Sources */,

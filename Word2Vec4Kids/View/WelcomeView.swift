@@ -11,7 +11,7 @@ struct WelcomeView: View {
     @State private var name = ""
     @State private var initial = ""
     @State private var gradeLevel = 1 // Default grade level
-
+    
     let gradeLevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] // Example grade levels
     
     @State private var isSubmitted = false // Track whether the user has submitted the form
@@ -33,24 +33,27 @@ struct WelcomeView: View {
                 
                 TextField("Name", text: $name)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal) // Add horizontal padding
+                    .padding(.horizontal, 60) // Add horizontal padding
                     .foregroundColor(.orange) // Change text color to orange
                     .frame(maxWidth: .infinity) // Adjusts width based on available space
+                    
                 
                 TextField("Initial", text: $initial)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal) // Add horizontal padding
+                    .padding(.horizontal, 60) // Add horizontal padding
                     .foregroundColor(.orange) // Change text color to orange
                     .frame(maxWidth: .infinity) // Adjusts width based on available space
                 
                 Picker("Grade Level", selection: $gradeLevel) {
                     ForEach(gradeLevels, id: \.self) { level in
                         Text("\(level)")
+                            .foregroundStyle(Color.orange)
                     }
                 }
                 .pickerStyle(DefaultPickerStyle())
-                .padding(.horizontal) // Add horizontal padding
+                .padding(.horizontal, 60) // Add horizontal padding
                 .frame(maxWidth: .infinity) // Adjusts width based on available space
+                .foregroundColor(.blue)
                 
                 Button("Submit") {
                     submitForm()
@@ -85,19 +88,42 @@ struct WelcomeView: View {
         
         // Create the folder
         let fileManager = FileManager.default
-        let documentsURL = URL(fileURLWithPath: "/Users/yshvrm/Documents/Courses/Independent Study/Students/")
+        let folderPath = "/Users/yshvrm/Documents/Courses/Independent Study/Students/" // Your file path here
         
         do {
             // Create folder name based on user information
             let folderName = "\(name)-\(initialChar)-\(gradeLevel)"
             // Construct the full URL for the new directory
-            let folderURL = documentsURL.appendingPathComponent(folderName)
+            let folderURL = URL(fileURLWithPath: folderPath).appendingPathComponent(folderName)
             // Create the directory
             try fileManager.createDirectory(at: folderURL, withIntermediateDirectories: true, attributes: nil)
             print("Directory created: \(folderURL.path)")
+            
+            // Capture and save the screenshot
+            let timestamp = DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .short)
+            let filename = "\(timestamp).png"
+            let fileURL = folderURL.appendingPathComponent(filename)
+            
+            // Capture screenshot of the entire screen
+            guard let windowImage = CGWindowListCreateImage(.infinite, .optionOnScreenOnly, kCGNullWindowID, [.bestResolution, .nominalResolution]) else {
+                print("Failed to capture screenshot")
+                return
+            }
+            
+            // Convert the CGImage to NSImage
+            let nsImage = NSImage(cgImage: windowImage, size: .zero)
+            
+            // Convert NSImage to Data (PNG format)
+            guard let pngData = nsImage.tiffRepresentation else {
+                print("Failed to convert NSImage to TIFF representation")
+                return
+            }
+            
+            // Write PNG data to file
+            try pngData.write(to: fileURL)
+            print("Screenshot saved to: \(fileURL.path)")
         } catch {
-            print("Error creating directory: \(error)")
+            print("Error creating directory or saving screenshot: \(error)")
         }
     }
-
 }

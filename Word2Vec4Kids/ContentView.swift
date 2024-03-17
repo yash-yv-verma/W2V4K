@@ -13,7 +13,7 @@ struct ContentView: View {
     
     init() {
         _question = State(initialValue: QnA())
-        let filePath = "/Users/yshvrm/Documents/iOSProjects/gloveTest/glove_100d_out.txt"
+        let filePath = "/Users/yshvrm/Documents/iOSProjects/glove/glove_100d_out.txt"
         SingletonEmbedding.shared.setup(filePath: filePath)
     }
     
@@ -21,7 +21,7 @@ struct ContentView: View {
     @State private var showMessage: Bool = false
     @State private var popupMessage: String = "" // Added popupMessage state
     
-    //let question: QnA = QnA(question: "King\t+\t _______ \t=\tQueen", choice1: "Man", choice2: "Woman", choice3: "Child", choice4: "Girl",    correctChoice: "Woman")
+    @State private var showMadLibs: Bool = false // Track whether to show Mad Libs view
     
     var body: some View {
         ZStack {
@@ -48,8 +48,26 @@ struct ContentView: View {
                         .animation(.easeInOut(duration: 0.5))
                 }
             }
+            
+            // Mad Libs Button
+            Button(action: {
+                showMadLibs.toggle()
+            }) {
+                Text("Mad-Libs")
+                    .foregroundColor(.white)
+                    .font(.title)
+                    .padding()
+            }
+            .position(x: (NSScreen.main?.visibleFrame.width ?? 800) - 100, y: 40) // Position the button at the top right corner
+            
+            if showMadLibs {
+                MadLibsView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity) // Cover the entire screen
+                    .background(Color.white)
+            }
+            
         }
-        
+        .frame(maxWidth: .infinity, maxHeight: .infinity) // Match the screen size
         .onAppear {
             // Call the word arithmetic function here
             WordArithmeticManager.shared.performWordArithmetic(addends: ["king", "woman"], subtrahends: ["man"], numberOfKeys: 5) { result in
@@ -57,12 +75,5 @@ struct ContentView: View {
                 self.question = QnA(question: result[0], choice1: result[1], choice2: result[2], choice3: result[3], choice4: result[4], correctChoice: result[1]) // Assuming the correct choice is the second element
             }
         }
-        
-    }
-    
-#Preview{
-        
-    ContentView()
-        
     }
 }
